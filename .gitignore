@@ -1,0 +1,4 @@
+env
+db.sqlite3
+.env
+list_id.text
