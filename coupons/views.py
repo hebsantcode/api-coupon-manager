@@ -141,7 +141,7 @@ def is_valid_for_coupons(request):
                     })
                 
                 return JsonResponse({
-                    "coupon": "coupon {} not exists".format(code)
+                    "coupon_error": "Coupon {} not exists.".format(code)
                 })
         
             return JsonResponse({
