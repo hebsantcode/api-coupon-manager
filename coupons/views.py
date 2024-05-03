@@ -132,6 +132,7 @@ def is_valid_for_coupons(request):
                         EmailUsed.objects.create(coupon=coupon, email=email)
                         return JsonResponse({
                             "is_valid": True,
+                            "coupon_code": coupon
                         })
                         
                     return JsonResponse({
@@ -140,7 +141,7 @@ def is_valid_for_coupons(request):
                     })
                 
                 return JsonResponse({
-                    "error": "coupon {} not exists".format(code)
+                    "coupon": "coupon {} not exists".format(code)
                 })
         
             return JsonResponse({
