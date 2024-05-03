@@ -126,17 +126,17 @@ def is_valid_for_coupons(request):
         for sub in SUBSCRIBERS:
             if email.lower() in str(sub.get('email_address')).lower():
                 coupon = Coupon.objects.filter(code=code).first()
-                print(coupon)
                 if coupon:
                     email_used_entry = EmailUsed.objects.filter(coupon=coupon, email=email).exists()
                     if not email_used_entry:
                         EmailUsed.objects.create(coupon=coupon, email=email)
                         return JsonResponse({
-                            "is_valid": True
+                            "is_valid": True,
                         })
                         
                     return JsonResponse({
-                        "is_valid": False
+                        "is_valid": False,
+                        "email": email
                     })
                 
                 return JsonResponse({
