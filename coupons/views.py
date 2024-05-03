@@ -132,7 +132,7 @@ def is_valid_for_coupons(request):
                         EmailUsed.objects.create(coupon=coupon, email=email)
                         return JsonResponse({
                             "is_valid": True,
-                            "coupon_code": coupon
+                            "coupon_code": coupon.code
                         })
                         
                     return JsonResponse({
