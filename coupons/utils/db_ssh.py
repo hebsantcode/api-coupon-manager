@@ -1,10 +1,14 @@
 # Configuración del túnel SSH
 from sshtunnel import SSHTunnelForwarder
+import dotenv
+import os
 
-SSH_HOST = 'premium166.web-hosting.com'
-SSH_PORT = 21098
-SSH_USERNAME = 'creafzdi'
-SSH_PASSWORD = 'sAntiago110812'
+dotenv.load_dotenv()
+
+SSH_HOST = os.environ.get('SSH_HOT')
+SSH_PORT = int(os.environ.get('SSH_PORT'))
+SSH_USERNAME = os.environ.get('SSH_USERNAME')
+SSH_PASSWORD = os.environ.get('SSH_PASSWORD')
 
 def setup_ssh_tunnel():
     # Set up ssh tunnel
