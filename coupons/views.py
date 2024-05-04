@@ -36,16 +36,16 @@ def create(request):
 def delete(request):
     if request.method == 'DELETE':
         data = json.loads(request.body)
-        code = data.get('code')
-        coupon = Coupon.objects.filter(code=code).first()
+        coupon_id = data.get('couponId')
+        coupon = Coupon.objects.get(pk=coupon_id)
         if coupon:
             coupon.delete()
             return JsonResponse({
-                "coupon_code": code,
+                "coupon_code": coupon.code,
                 "is_deleted": True
             })
         return JsonResponse({
-            "coupon_code": code,
+            "coupon_code": coupon.code,
             "is_deleted": False
         })
     
